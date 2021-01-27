@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  </head>
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>    
+    <!--AJAX-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body>
+  <center>
+      <div class="radio">
+        <label><input type="radio" name="optradio" id="checkBox" value="computer">Computer Science & Engineering</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="optradio" id="checkBox" value="electronics" >Electronics & Communications</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="optradio" id="checkBox" value="electrical" >Electrical Engineering</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="optradio" id="checkBox" value="mechanical" >Mechanical Engineering</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="optradio" id="checkBox" value="chemical" >Chemical Engineering</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="optradio" id="checkBox" value="biotechnology" >Biotechnology & Biomedical Engineering</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="optradio" id="checkBox" value="physical">Physical Sciences</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="optradio" id="checkBox" value="chemical">Chemical Sciences</label>
+      </div>
+      <input type="text" name="description" id="description" placeholder="Description"><br>
+      <input type="text" name="link" id="link" placeholder="Link"><br>
+      <button type="submit" class="btn btn-default" id="button">Submit</button>   
+  </center>
+
+
+<script>
+  $(document).ready(function(){
+   $("#button").click(function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var value=$('input[name="optradio"]:checked').val();
+    var description=$("#description").val();
+    var link=$("#link").val();
+    if(description){
+      $.ajax({
+        url:"/admin/labAdmin",
+        data:{description:description,value:value,link:link},
+        method:"POST",
+        dataType:"JSON",
+        success:function(res){console.log("success");
+        }
+      })
+      window.location.replace("http://localhost:3000/ ");
+    }
+    else{
+      console.log("Please enter description");
+    }
+   })
+  })
+   
+</script>
+
+</body>
+</html>
