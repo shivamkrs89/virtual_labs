@@ -39,18 +39,12 @@ router.get('/profile',(req,res)=>{
 })
 
 
-
-
-
-
-
-
 router.post('/publish_lab',(req,res)=>{
     console.log(req.body.inst_name);
     console.log(req.body.branch_name);
     var inst_name=req.body.inst_name;
   //var email = req.body.email; is the email of the user
-  var email='xyz@gmail.com'; //user's/publisher's email
+  var email='mrshivamkr4@gmail.com'; //user's/publisher's email
   var branch_name=req.body.branch_name;
 
   var emailMessage = `Hi there,\n\nThank you for your request to publish lab.\n\nYour email is: ${email}.\n\nYour institute is: ${inst_name} \n You are requesting to publish lab related to ${branch_name}\n\n Our Team will contact you within few days asking your lab details`;
@@ -80,15 +74,15 @@ router.post('/publish_lab',(req,res)=>{
     } else {
       console.log('Message Sent: ' + info.response);
       console.log('Email Message: ' + emailMessage);
-      res.send('Email sent');
+      
       PublishLab.findById(email, function(err, doc) {
         if (err) {
           console.error('error, no entry found');
         }
-        doc.publisher_mailID = req.body.email;
-        doc.inst_name = req.body.inst_name;
-        doc.branch_name = req.body.branch_name;
-        doc.save();
+        PublishLab.publisher_mailID = email;
+        PublishLab.inst_name = req.body.inst_name;
+        PublishLab.name = req.body.branch_name;
+        res.send('Email sent and saved to db');
       })
     }
   });
