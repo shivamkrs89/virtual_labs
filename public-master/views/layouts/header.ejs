@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('#Login').click(function(){
+          $("#loginForm").show();
+        })
+      })
+    </script>
+
   </head>
 
   <body>
@@ -54,7 +62,7 @@
               <a href="/users/register">Register</a>
             </li>
             <li>
-            <a href="/users/login ">Login</a>
+            <a href="/users/login" id="Login">Login</a>
           </li>
             <%}%>
           </ul>
@@ -74,3 +82,11 @@
                 <div class="row">
                   <div class="col-xs-12 col-md-1"></div>
                   <div class="col-xs-12 col-md-8">
+                    </div>
+                    </div>
+    </div>
+    <div id="loginForm">
+      
+    </div>
+    </body>
+    </html>

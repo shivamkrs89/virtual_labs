@@ -8,7 +8,7 @@ var auth=require('../config/auth');
 var User = require('../models/user');
 //Get Register
 router.get('/register',function(req,res){
-  res.render('register',{
+  res.render('index',{
     title:'Register'
   });
 });
@@ -43,7 +43,7 @@ router.post('/register',function(req,res){
         if(user)
         {
           req.flash('danger',"Username exists choose another")
-          res.redirect('/users/register');
+          res.redirect('/users/index');
         }
         else
         {
@@ -64,8 +64,8 @@ router.post('/register',function(req,res){
                 console.log(err);
                  else
                  {
-                   req.flash('success','You are now registered!')
-                   res.redirect('/users/login')
+                  // req.flash('success','You are now registered!')
+                   res.redirect('/lab')
                  }                 
               })
             })
@@ -77,14 +77,14 @@ router.post('/register',function(req,res){
 router.get('/login',function(req,res){
   if(res.locals.user)
   res.redirect('/');
-  res.render('login',{
+  res.render('index',{
     title:'Log in'
   })
 });
 router.post('/login',function(req,res,next){
   passport.authenticate('local',{
-    successRedirect:'/profile',
-    failureRedirect:'/users/login',
+    successRedirect:'/lab',
+    failureRedirect:'/',
     failureFlash:true
   })(req,res,next);
 });
@@ -92,7 +92,7 @@ router.post('/login',function(req,res,next){
 router.get('/logout',function(req,res){
   req.logout();
   req.flash('success','You are logged out');
-  res.redirect('/users/login');
+  res.redirect('/');
 });
 // facebook -------------------------------
 
@@ -102,7 +102,7 @@ router.get('/logout',function(req,res){
         // handle the callback after facebook has authenticated the user
         router.get('/auth/facebook/callback',
             passport.authenticate('facebook', {
-                successRedirect : '/profile',
+                successRedirect : '/lab',
                 failureRedirect : '/'
             }));
 
@@ -114,7 +114,7 @@ router.get('/logout',function(req,res){
             // handle the callback after facebook has authorized the user
         router.get('/connect/facebook/callback',
                 passport.authorize('facebook', {
-                    successRedirect : '/profile',
+                    successRedirect : '/lab',
                     failureRedirect : '/'
                 }));
 

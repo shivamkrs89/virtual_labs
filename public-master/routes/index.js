@@ -4,11 +4,15 @@ var router=express.Router();
 const nodemailer = require('nodemailer');
 var PublishLab=require('../models/publish_lab');
 const passport=require("passport");
-const isLoggedIn=require("../config/passport");
+var auth1=require('../config/auth1');
+const isLoggedIn=auth1.isLoggedIn;
 router.get('/',(req,res)=>{
     res.render('home');
 })
-router.get('/team',(req,res)=>{
+router.get('/index',(req,res)=>{
+  res.render('index');
+})
+router.get('/team',isLoggedIn,(req,res)=>{
     res.render('team');
 })
 router.get('/resorces',(req,res)=>{
@@ -45,12 +49,12 @@ router.get('/profile',(req,res)=>{
 
 
 
-router.post('/publish_lab',(req,res)=>{
+router.post('/publish_lab',isLoggedIn,(req,res)=>{
     console.log(req.body.inst_name);
     console.log(req.body.branch_name);
     var inst_name=req.body.inst_name;
   //var email = req.body.email; is the email of the user
-  var email='mrshivamkr4@gmail.com'; //user's/publisher's email
+  var email='rawabhishek5@gmail.com'; //user's/publisher's email
   var branch_name=req.body.branch_name;
 
   var emailMessage = `Hi there,\n\nThank you for your request to publish lab.\n\nYour email is: ${email}.\n\nYour institute is: ${inst_name} \n You are requesting to publish lab related to ${branch_name}\n\n Our Team will contact you within few days asking your lab details`;
