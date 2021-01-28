@@ -39,6 +39,12 @@ router.get('/profile',(req,res)=>{
 })
 
 
+
+
+
+
+
+
 router.post('/publish_lab',(req,res)=>{
     console.log(req.body.inst_name);
     console.log(req.body.branch_name);
@@ -75,13 +81,17 @@ router.post('/publish_lab',(req,res)=>{
       console.log('Message Sent: ' + info.response);
       console.log('Email Message: ' + emailMessage);
       
-      PublishLab.findById(email, function(err, doc) {
+      PublishLab.find({'publisher_mailID':email}, function(err) {
         if (err) {
           console.error('error, no entry found');
         }
-        PublishLab.publisher_mailID = email;
-        PublishLab.inst_name = req.body.inst_name;
-        PublishLab.name = req.body.branch_name;
+        const publishers = new PublishLab();
+        publishers.publisher_mailID = email;
+        publishers.inst_name = req.body.inst_name;
+        publishers.branch_name=req.body.branch_name;
+        console.log(publishers);
+        publishers.save();
+
         res.send('Email sent and saved to db');
       })
     }
