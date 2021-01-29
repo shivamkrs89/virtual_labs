@@ -22,54 +22,43 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">LabsWorld </a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
+    <nav>
+              <a href="/"><strong>Home</strong></a>
+           
+          
               <a href="/lab">Lab</a>
-            </li>
-            <li>
+           
+            
               <a href="/team">Team</a>
-            </li>
-            <li>
+            
+           
               <a href="/resorces">Resorces</a>
-            </li>
-            <li>
+            
+            
               <a href="/contact">Contact</a>
-            </li>
+            
             <% if(user){%>
 
-            <li>
+            
               <a href="/users/register">Register</a>
-            </li>
-              <li><a href="/users/logout">Hi, <%= user.username%> (Logout)</a></li>
+            
+              <a href="/users/logout">Hi, <%= user.username%> (Logout)</a>
             <%}else{%>
 
-            <li id="sameLine">
+            
               <a href="/users/register">Register</a>
-            </li>
-            <li>
+           
+            
             <a href="/users/login" id="Login">Login</a>
-          </li>
+          
             <%}%>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+          
+        <!--/.nav-collapse -->
+      
+      <div class="animation start-home"></div>
     </nav>
-
+ 
+   
     <div class="container">
       <%- messages('messages', locals) %>
         <% if(errors){ %>
