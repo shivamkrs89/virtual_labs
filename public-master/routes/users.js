@@ -64,7 +64,7 @@ router.post('/register',function(req,res){
                 console.log(err);
                  else
                  {
-                  // req.flash('success','You are now registered!')
+                   //req.flash('success','You are now registered!')
                    res.redirect('/lab')
                  }                 
               })
@@ -82,7 +82,9 @@ router.get('/login',function(req,res){
   })
 });
 router.post('/login',function(req,res,next){
+  console.log('login-try')
   passport.authenticate('local',{
+  
     successRedirect:'/lab',
     failureRedirect:'/',
     failureFlash:true
