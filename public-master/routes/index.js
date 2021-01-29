@@ -3,6 +3,7 @@ var Lab=require("../models/admin/lab")
 var router=express.Router();
 const nodemailer = require('nodemailer');
 var PublishLab=require('../models/publish_lab');
+var feedback=require('../models/feedback'); 
 const passport=require("passport");
 var auth1=require('../config/auth1');
 const isLoggedIn=auth1.isLoggedIn;
@@ -44,7 +45,19 @@ router.get('/profile',(req,res)=>{
 
 
 
+router.post('/feedback',(req,res)=>{
 
+  var stars=req.body.star;
+  var feedback_text=req.body.feedback_text;
+
+  const feedback_data = new feedback();
+        feedback_data.stars=stars;
+        feedback_data.description=feedback_text;
+        console.log(feedback_data);
+        feedback_data.save();
+
+        res.send('feedback sent');
+})
 
 
 
