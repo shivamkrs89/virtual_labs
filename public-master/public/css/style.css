@@ -4,7 +4,7 @@
   border-color: #ebccd1;
 }
 .stylecat{
-  color: black;
+  color: rgb(49, 41, 41);
 }
 .txt-center {
   text-align: center;
@@ -65,9 +65,9 @@ justify-content:flex-end;
 #vertical {
   align-content: center;
   position: fixed;
-  background-color:#e0a118;
+  background-color:blanchedalmond;
   top: 15%;
-  bottom: 68%;
+  bottom: 71%;
   right: 0;
   left: calc(100% - 48px);
 }
