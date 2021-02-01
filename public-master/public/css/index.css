@@ -15,7 +15,9 @@ body {
 	height: 100vh;
 	margin: -20px 0 50px;
 }
-
+#secretPassword{
+	display: none;
+}
 h1 {
 	font-weight: bold;
 	margin: 0;

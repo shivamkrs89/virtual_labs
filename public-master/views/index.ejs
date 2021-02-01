@@ -20,9 +20,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatiable" content="ie=edge" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <title>login</title>
+    <script>
+        $(document).ready(function(){
+            $('#mySelect').on('change', function() {
+                var selectedOption = $(this).find('option:selected');
+                if(selectedOption[0].value==1){
+                    $("#secretPassword").css("display","block");
+                }
+});
+        })
+    </script>
+
 </head>
 <body>
     <div class="container" id="container" style="margin-top: 2%;" >
@@ -41,6 +53,14 @@
                 <input type="text" class="form-control" name="email" placeholder="Email">
                 <input type="password" class="form-control" name="password" placeholder="Password">
                 <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+                <div class="form-group"> 
+                <select id="mySelect" name = "isAdmin">
+                 <option disabled selected>Choose...</option>
+                 <option class="isAdmin"value="0">Client</option>
+                 <option class="isAdmin"value="1">Admin</option>
+               </select>
+                       </div>
+                <input type="password" class="form-control" id="secretPassword" name="secretPassword" placeholder="Secret Password">
                 <button id="">Sign-up</button>
             </form>
         </div>

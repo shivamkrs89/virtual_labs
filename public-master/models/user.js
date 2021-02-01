@@ -6,7 +6,8 @@ var UserSchema=mongoose.Schema({
           email:String,//required:true},
           username:String,//required:true},
           password:String,// required:true},
-          admin:Number
+          admin:Number,
+          image:{type:String,default:"image-1603183764252.png"}
       },
   facebook       : {
           id           : String,

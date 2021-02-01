@@ -1,53 +1,4 @@
-body{
-    margin-top:20px;
-    background:#FAFAFA;
-}
-.order-card {
-    color: #fff;
-}
 
-.bg-c-blue {
-    background: linear-gradient(50deg,rgb(139, 155, 199),rgb(147, 206, 11));
-}
-
-.bg-c-green {
-    background: linear-gradient(45deg,#2ed8b6,#155a4c);
-}
-
-.bg-c-yellow {
-    background: linear-gradient(45deg,rgb(46, 144, 209),rgb(228, 232, 236));
-}
-
-.bg-c-pink {
-    background: linear-gradient(45deg,#FF5370,#ff869a);
-}
-
-
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-    border: none;
-    margin-bottom: 30px;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.card .card-block {
-    padding: 25px;
-}
-
-.order-card i {
-    font-size: 26px;
-}
-
-.f-left {
-    float: left;
-}
-
-.f-right {
-    float: right;
-}
   
 #heading{
     margin-left: 33%;
@@ -59,11 +10,15 @@ body{
     padding: 3%;
     text-align: center;
 }
-
+.align{
+    
+}
+.edit{
+    display: none;
+}
 .jumbotron p {
     font-size: 14px !important;
     font-family: 'PT Sans', sans-serif;
-    padding: 1.5%;
 }
 
 .card-body p {

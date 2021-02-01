@@ -4,13 +4,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/lab.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
@@ -22,7 +21,7 @@
 
   </head>
 
-  <body class="card bg-c-green order-card">
+  <body>
     <nav>
               <a href="/"><strong>Home</strong></a>
            
@@ -37,7 +36,11 @@
             
             
               <a href="/contact">Contact</a>
-            
+              <% if(user){%>
+              <% if(user.local.admin==1){%>
+                <a href="/admin">Admin</a>
+              <%}%> 
+              <%}%>   
             <% if(user){%>
 
             
@@ -53,7 +56,7 @@
             <a href="/users/login" id="Login">Login</a>
           
             <%}%>
-          
+            
         <!--/.nav-collapse -->
       
       <div class="animation start-home"></div>
@@ -70,9 +73,7 @@
             <% }); %>
               <% } %>
                 <div class="row">
-                  <div class="col-xs-12 col-md-1">
-                  
-                  </div>
+                  <div class="col-xs-12 col-md-1"></div>
                   <div class="col-xs-12 col-md-8">
                     </div>
                     </div>

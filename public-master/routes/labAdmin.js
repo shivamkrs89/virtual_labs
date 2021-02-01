@@ -4,7 +4,6 @@ var Lab=require('../models/admin/lab');
 var bodyParser = require('body-parser');
 
 router.get('/labAdmin',(req,res)=>{
-    console.log('labAdmin');
     res.render('labAdmin');
 })
 router.post('/labAdmin',(req,res)=>{
@@ -16,12 +15,14 @@ router.post('/labAdmin',(req,res)=>{
     LabData.heading=heading;
     LabData.description=description;
     LabData.link=link;
-    console.log(LabData);
     Lab.StoreData(LabData,(err,LabData)=>{
         if(err)throw err;
         console.log(LabData);
     })
-res.send('Labs created');
+
+})
+router.get('/',(req,res)=>{
+    res.render('admin');
 })
 router.get('/editLabAdmin',(req,res)=>{
     res.render('editLabAdmin');

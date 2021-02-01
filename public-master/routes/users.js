@@ -4,20 +4,36 @@ var router=express.Router();
 var passport=require('passport');
 var bcrypt=require('bcryptjs');
 var auth=require('../config/auth');
+var secretPassword="virtuallab";
+const multer=require('multer');
 //Get user model
 var User = require('../models/user');
+
+//Image upload
+var storage=multer.diskStorage({
+  destination:"public/uploads/",
+  filename:function(req,file,callback){
+      callback(null,file.fieldname + '-' + Date.now() +path.extname(file.originalname));
+  }
+})
+
+var uploads=multer({
+  storage:storage
+}).single('image');
 //Get Register
 router.get('/register',function(req,res){
   res.render('index',{
     title:'Register'
   });
 });
-router.post('/register',function(req,res){
+router.post('/register',uploads,function(req,res){
    var name=req.body.name;
    var email=req.body.email;
    var username=req.body.username;
    var password=req.body.password;
    var password2=req.body.password2;
+   var admin=req.body.isAdmin;
+   if(admin==1 && secretPassword==req.body.secretPassword){res.render('index');}
    console.log(name);
    req.checkBody('name','name is required!').notEmpty();
    req.checkBody('email','email is required!').isEmail();
@@ -53,7 +69,9 @@ router.post('/register',function(req,res){
             user.local.email=email,
             user.local.username=username,
             user.local.password=password,
-            user.local.admin=1
+            user.local.admin=admin,
+            user.local.image='image-1603183764252.png';
+
           bcrypt.genSalt(10,function(err,salt){
             bcrypt.hash(user.local.password,salt,function(err,hash){
               if(err)
@@ -65,7 +83,7 @@ router.post('/register',function(req,res){
                  else
                  {
                    //req.flash('success','You are now registered!')
-                   res.redirect('/lab')
+                   res.redirect('/index')
                  }                 
               })
             })
@@ -90,6 +108,9 @@ router.post('/login',function(req,res,next){
     failureFlash:true
   })(req,res,next);
 });
+router.get('/userProfile',(req,res)=>{
+  res.render("userProfile");
+})
 
 router.get('/logout',function(req,res){
   req.logout();
