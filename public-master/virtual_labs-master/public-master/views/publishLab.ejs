@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src="//sta.codeforces.com/s/81719/js/prettify/prettify.js"></script>
+<link rel="stylesheet" href="/css/problem.css">
+
+<link href="assets/css/style.css" rel="stylesheet">
+<!--JQUERY-->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+     $(document).ready(function(){
+       no=1;
+        $.get("/publishLab",(result,status)=>{  
+            no=result.length;
+            for(let i=0;i<result.length;i++){
+                console.log(result[i]);
+                var id=result[i]._id;
+                console.log(id);
+                $('.QuesTable').append(`<tr><td>`+(i+1)+`</td>
+                                        <td><a href=/newPage?id=`+id+`>`+result[i].publisher_mailID+`</a></td>
+                                        <td>`+result[i].inst_name+`</td>
+                                        <td>`+result[i].branch_name+`</td>
+                                        <td><a href="" class="btnDelete" id=`+id+`>🗑</td>
+                                        </tr>
+                `);
+                // $('#quest').append('<a href=/newPage?id='+id+'>'+`${i+1}`+result[i].title.slice(2)+'\xa0\xa0\xa0\xa0\xa0\xa0\xa0'+result[i].rating+"<br>");
+            }
+        })
+        $('.QuesTable').on('click','.btnDelete',function(e){
+            $(this).closest('tr').remove();
+            e.preventDefault();
+            var id = $(this).attr('id');
+            console.log(no);
+            console.log(id);
+            $.ajax({
+                url:'/delete',
+                method:"POST",
+                data:{page:id},
+                dataType:'JSON'  
+            })
+            no-=1;
+            if(no==0){
+                //$('.Problems').hide();
+                //$('.addProblems').show();
+            }
+        })
+    })
+</script>
+
+</head>
+<body>
+   <div class="jumbotron">
+    <table  class="table table-dark "  id="tableId">
+        <tr>
+            <th scope="col">Publisher Mail Id</th>
+            <th scope="col">Institute Name</th>
+            <th scope="col">Branch Name</th>
+        </tr>
+        <tbody class="QuesTable">
+        </tbody>
+    </table>
+   </div>
+</body>
+</html>
