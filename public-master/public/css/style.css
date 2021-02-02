@@ -1,11 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-    color: #f2f5f7;
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    font-weight: 300;
-}
+
 body{
     overflow-x: hidden;
 }
@@ -199,66 +192,5 @@ nav{
 .clear {
   float: none;
   clear: both;
-}
-
-.rating {
-    align-content: flex-start;
-    display: inline-flex;
-    width: 90px;
-    font-size: 100px;
-    height: 60vh;
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    text-align: center;
-    position: relative;
-    display: flex;
--moz-box-align:start;
-align-items: right;
--moz-box-pack:end;
-justify-content:flex-end;
-}
-
-.rating > label {
-    float: right;
-    display: inline;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    width: 1.1em;
-    cursor: pointer;
-    color: #000;
-}
-
-.rating > label:hover,
-.rating > label:hover ~ label,
-.rating > input.radio-btn:checked ~ label {
-    color: transparent;
-}
-
-.rating > label:hover:before,
-.rating > label:hover ~ label:before,
-.rating > input.radio-btn:checked ~ label:before,
-.rating > input.radio-btn:checked ~ label:before {
-    content: "\2605";
-    position: absolute;
-    left: 0;
-    color: #FFD700;
-}
-
-#vertical {
-  align-content: center;
-  position: fixed;
-  background-color:#e0a118;
-  top: 15%;
-  bottom: 68%;
-  right: 0;
-  left: calc(100% - 48px);
-}
-.wrapper {
-position: relative;
-margin-right: -100%;
-transform: rotate(90deg) translate(0, -15px);
-transform-origin: left bottom;
-width: 100vh;
 }
 

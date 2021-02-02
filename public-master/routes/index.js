@@ -96,7 +96,51 @@ router.post('/feedback',isLoggedIn,(req,res)=>{
 })
 })
 
+router.post('/Questions',(req,res)=>{
 
+  
+  var Qn_text=req.body.Qn_text;
+  var email=req.body.visitor_email;
+  var emailMessage = `Hi there ${email},\n\n \Thanks, Your question will be looked onto.\n\nWe will get in touch soon.\n\n`;
+  console.log('request contact');
+  console.log(req.body)
+ 
+
+  var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'vlabs2021@gmail.com',
+      pass: 'HelloLabs@2021'
+    }
+  });
+
+  var emailOptions = {
+    from: 'vlabs2021@gmail.com',
+    to: email,
+    subject: 'Question ',
+    text: emailMessage
+  };
+
+  transporter.sendMail(emailOptions, (err, info) => {
+    if (err) {
+      console.log(err);
+      res.send('contact sent error');
+    } else {
+      console.log('Message Sent: ' + info.response);
+      console.log('Email Message: ' + emailMessage);
+      
+        const feedback_data = new feedback();
+        feedback_data.email=email;
+       
+        feedback_data.description=Qn_text;
+        console.log(feedback_data);
+        feedback_data.save();
+
+        res.redirect('/lab');
+    }
+  
+})
+})
 
 router.get('/publishLab',(req,res)=>{
   PublishLab.find({}).sort({date: 'asc'}).exec(function(err, result) {

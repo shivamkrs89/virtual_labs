@@ -1,0 +1,102 @@
+.modal.right.fade .modal-dialog {
+    right: -320px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+            transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.in .modal-dialog {
+    right: 0;
+}
+
+/* ----- MODAL STYLE ----- */
+.modal-content {
+    border-radius: 0;
+    border: none;
+}
+
+.modal-header {
+    border-bottom-color: #EEEEEE;
+    background-color: #FAFAFA;
+}
+*{
+    margin: 0;
+    padding: 0;
+    color: #213847;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+.rating {
+    align-content: flex-start;
+    display: inline-flex;
+    width: 70px;
+    font-size: 100px;
+    height: 20vh;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+    display: flex;
+-moz-box-align:start;
+align-items: right;
+-moz-box-pack:end;
+justify-content:flex-end;
+}
+
+.rating > label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 0.9em;
+    cursor: pointer;
+    color: #000;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}
+
+#vertical {
+  align-content: center;
+  position: fixed;
+  background-color:#e0a118;
+  top: 15%;
+  bottom: 68%;
+  right: 0;
+  left: calc(100% - 48px);
+}
+.wrapper {
+position: relative;
+margin-right: -100%;
+transform: rotate(90deg) translate(0, -15px);
+transform-origin: left bottom;
+width: 100vh;
+}
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(31, 71, 122, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(40, 86, 146, 0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: linear-gradient(46deg, rgb(126, 150, 172) 41%, rgba(224, 199, 233, 0.847) 100%); 
+}
+
