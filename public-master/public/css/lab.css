@@ -1,54 +1,16 @@
-body{
+
+  body{
     margin-top:20px;
-    background:#FAFAFA;
-}
-.order-card {
-    color: #fff;
+   
 }
 
-.bg-c-blue {
-    background: linear-gradient(50deg,rgb(221, 224, 231),rgb(200, 206, 187));
+.form-text{
+    
+        color:black;
+        opacity: 1; /* Firefox */
+      
 }
 
-.bg-c-green {
-    background: linear-gradient(45deg,#2ed8b6,#155a4c);
-}
-
-.bg-c-yellow {
-    background: linear-gradient(45deg,rgb(46, 144, 209),rgb(228, 232, 236));
-}
-
-.bg-c-pink {
-    background: linear-gradient(45deg,#FF5370,#ff869a);
-}
-
-
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-    border: none;
-    margin-bottom: 30px;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.card .card-block {
-    padding: 25px;
-}
-
-.order-card i {
-    font-size: 26px;
-}
-
-.f-left {
-    float: left;
-}
-
-.f-right {
-    float: right;
-}
-  
 #heading{
     margin-left: 33%;
     font-weight: 600;
@@ -58,19 +20,42 @@ body{
     font-size: 100%;
     padding: 3%;
     text-align: center;
+    
 }
-
+.align{
+    
+}
+.edit{
+    display: none;
+}
 .jumbotron p {
     font-size: 14px !important;
+  
     font-family: 'PT Sans', sans-serif;
-    padding: 1.5%;
+    
 }
-
-.card-body p {
-    width: 10rem;;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.order-card {
+    color: #fff;
+}
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(31, 71, 122, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(40, 86, 146, 0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(96deg, rgba(9,68,121,1) 41%, rgba(187,0,255,0.846673703661152) 100%); 
+}
+.card-body  {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(31, 71, 122, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(40, 86, 146, 0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(96deg, rgb(46, 145, 226) 41%, rgba(130, 116, 136, 0.847) 100%); 
 }
 .clientSite{
     display:none;

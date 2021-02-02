@@ -13,7 +13,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <body>
   <center>
-  <form action="admin/labAdmin" method="POST">
       <div class="radio">
         <label><input type="radio" name="optradio" id="checkBox" value="computer">Computer Science & Engineering</label>
       </div>
@@ -41,8 +40,8 @@
       <input type="text" name="description" id="description" placeholder="Description"><br>
       <input type="text" name="link" id="link" placeholder="Link"><br>
       <button type="submit" class="btn btn-default" id="button">Submit</button>   
-  </form>
-</center>
+  </center>
+
 
 <script>
   $(document).ready(function(){
@@ -54,15 +53,14 @@
     var link=$("#link").val();
     if(description){
       $.ajax({
-        url:"admin/labAdmin",
+        url:"/admin/labAdmin",
         data:{description:description,value:value,link:link},
         method:"POST",
         dataType:"JSON",
         success:function(res){console.log("success");
         }
       })
-      
-     // window.location.replace("http://localhost:3000/ ");
+      window.location.replace("http://localhost:3000/ ");
     }
     else{
       console.log("Please enter description");

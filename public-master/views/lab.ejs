@@ -13,30 +13,26 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script>
       $(document).ready(function(){
-      // if(users){
-      //   // if(users.local.admin==1){
-      //   //    $("#edit").css("display","block");
-      //   // }
-      // }
-       user="admin";
-      if(user=="admin"){
-        console.log("hello");
-        // $("client").hide();
+      if(users){
+        if(users.local.admin==1){
+           $("#edit").css("display","block");
+        }
       }
+    
       $.get('/data',(result,status)=>{
         console.log(result);
         for(i=0;i<result.length;i++){
           console.log(result[i]);
           $('#card_row').append(`
-          <div class="col-md-4 col-xl-3">
-                            <div class="card bg-c-yellow order-card" style="margin:3%" >
-                                <div class="card-block">
-                                  <a href=/admin/editLabAdmin?id=`+result[i]._id+` id="edit"><b>EDIT</b></a>
+          <div class="col-md-3">
+                            <div class="card" style="width: 18rem;padding:5%; margin:3%">
+                              <a href=/admin/editLabAdmin?id=`+result[i]._id+` id="edit"><b>EDIT</b></a>
                                 <img src="..." class="card-img-top" alt="...">
-                                  <h5 class="m-b-20"><b>`+result[i].heading+`</b></h5><br>
-                                  <h6 class="card-text"><b>`+result[i].description+`</b>
-                                    </h6>
-                                    <a href="`+result[i].link+`" class="w3-btn w3-round">click</a>
+                                <div class="card">
+                                  <h5 class="card-title"><b>`+result[i].heading+`</b></h5>
+                                  <p class="card-text" style:>`+result[i].description
+                                    +`</p>
+                                    <a href="`+result[i].link+`" class="card-body w3-btn w3-round">click</a>
                                 </div>
                               </div>
                         </div>
@@ -56,16 +52,15 @@
             for(i=0;i<result.length;i++){
           console.log(result[i]);
           $('#card_row').append(`
-          <div class="col-md-4 col-xl-3">
-                            <div class="card bg-c-yellow order-card" style="margin:3%">
-                              
-                                
-                                <div class="card-block">
-                                  <a href="`+result[i].link+`"><b>EDIT</b></a>
-                                  <h5 class="m-b-20"><b>`+result[i].heading+`<b></h5>
-                                   <h6 class="card-text"><b>`+result[i].description+`</b>
-                                    </h6>
-                                    <a href="`+result[i].link+`" class="w3-btn w3-round" >click</a>
+          <div class="col-md-4">
+                            <div class="card text-white bg-dark mb-3" style="width: 18rem;padding:5%; margin:3%">
+                              <a href=/admin/editLabAdmin?id=`+result[i]._id+` id="edit"><b>EDIT</b></a>
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card">
+                                  <h5 class="card-title"><b>`+result[i].heading+`<b></h5>
+                                  <p class="card-text">`+result[i].description
+                                    +`</p>
+                                    <a href="`+result[i].link+`" class="card-body w3-btn w3-round" >click</a>
                                 </div>
                               </div>
                         </div>
@@ -88,42 +83,47 @@
 
 
   <body>
+    <header>
    <%-include("./layouts/header")%>  
-    <h1 id="heading">Disciplines and Domains</h1>
-    <div class="container" style="width: 125%;" >
-      <div class="row ">
-        <div class="card bg-c-blue order-card col-md-3" style="font-size: 14px !important; font-family: 'PT Sans',sans-serif; 
-        padding: 1.5%;" >
-         <div class="row text"><button class="card bg-c-yellow order-card course w3-button w3-none" style="padding:4%; border: 0cm; border: 2px solid bisque;  width:100%;"  value="computer"><b>Computer Science & <br>Engineering</b></button></div>
-         <div class="row text"><button class="card bg-c-yellow order-card course w3-button w3-none" style="padding:4%; border: 0cm; border: 2px solid bisque;  width:100%;" value="electronics"><b>Electronics & <br>Communications</b></button></div>
-         <div class="row text"><button class="card bg-c-yellow order-card course w3-button w3-none" style="padding:4%; border: 0cm; border: 2px solid bisque; width:100%;" value="electrical"><b>Electrical Engineering</b></button></div>
-         <div class="row text"><button class="card bg-c-yellow order-card course w3-button w3-none" style="padding:4%; border: 0cm; border: 2px solid bisque;  width:100%;"value="mechanical" ><b>Mechanical Engineering</b></button></div>
-         <div class="row text"><button class="card bg-c-yellow order-card course w3-button w3-none" style="padding:4%; border: 0cm; border: 2px solid bisque;  width:100%;"value="chemical" ><b>Chemical Engineering</b></button></div>
-         <div class="row text"><button class="card bg-c-yellow order-card course w3-button w3-none" style="padding:4%; border: 0cm; border: 2px solid bisque;  width:100%;"value="biotechnology" ><b>Biotechnology &<br> Biomedical Engineering</b></button></div>
-         <div class="row text"><button class="card bg-c-yellow order-card course w3-button w3-none" style="padding:4%; border: 0cm; border: 2px solid bisque;  width:100%;"value="physical" ><b>Physical Sciences</b></button></div>
-         <div class="row text"><button class="card bg-c-yellow order-card course w3-button w3-none" style="padding:4%; border: 0cm; border: 2px solid bisque;  width:100%;"value="chemicalScience" ><b>Chemical Sciences</b></button></div>
+</header>
 
-       </div>
-       <div class="col-md-7 ">
-        <div>
-            <div class="card bg-c-blue order-card">
-                <div class="row" id="card_row">
-                    
+   
+    <div class="container"  style="width: 120%;  height: 80%;" >
+
+     
+      <div class="row ">
+        <h1 id="heading">Disciplines and  Domains</h1>
+          <div class=" card col-md-3 margin:2%;" >
+            <div class="row text" ><button class="card-body course w3-button w3-none" style="padding:4%; border: 0cm; width:100%; "  value="computer"><b>Computer Science & <br>Engineering</b></button></div>
+            <div class="row text"><button class="card-body course w3-button w3-none" style="padding: 4%; border: 0cm; width:100%; " value="electronics"><b>Electronics & <br>Communications</b></button></div>
+            <div class="row text"><button class="card-body course w3-button w3-none" style="padding: 4%; border: 0cm; width:100%; " value="electrical"><b>Electrical Engineering</b></button></div>
+            <div class="row text"><button class="card-body course w3-button w3-none" style="padding:4%; border: 0cm; width:100%; " value="mechanical" ><b>Mechanical Engineering</b></button></div>
+            <div class="row text"><button class="card-body course w3-button w3-none" style="padding:4% ; border: 0cm; width:100%; " value="chemical" ><b>Chemical Engineering</b></button></div>
+            <div class="row text"><button class="card-body course w3-button w3-none" style="padding:4% ; border: 0cm; width:100%; " value="biotechnology" ><b>Biotechnology &<br> Biomedical Engineering</b></button></div>
+            <div class="row text"><button class="card-body course w3-button w3-none" style="padding:4%; border: 0cm; width:100%; "  value="physical" ><b>Physical Sciences</b></button></div>
+            <div class="row text"><button class="card-body course w3-button w3-none" style="padding:4% ; border: 0cm; width:100%; " value="chemicalScience" ><b>Chemical Sciences</b></button></div>
+
+          </div>
+          <div class="col-md-7 ">
+            <div>
+                <div class="card">
+                    <div class="row" id="card_row">
+                        
+                    </div>
                 </div>
             </div>
-        </div>
-      </div>
+          </div>
       </div>
     </div>
     <div>
-      <div class="card bg-c-yellow order-card col-md-4" style="font-size: 14px !important; font-family: 'PT Sans',sans-serif;color: brown; padding: 1.5%;">
+      <div class="card col-md-4" style="font-size: 14px !important; font-family: 'PT Sans',sans-serif; padding: 1.5%;">
         <h4>Publish your own Lab</h1>
-      <form action="/publish_lab" method="POST">
+      <form  action="/publish_lab" method="POST">
         <label for="inst_name">Institute name:</label><br>
-            <input type="text" name="inst_name" id="inst_name">
+            <input class="form-text" type="text" name="inst_name" id="inst_name" >
             <div class="form-group"> 
               <label for="myselect">Engineering Field:</label><br>
-                 <select id="mySelect" name = "branch_name">
+                 <select class="form-text" id="mySelect" name = "branch_name">
            <option value="CSE">Computer Science and Engineering</option>
            <option value="ECE">Electronics and Communications Engineering</option>
            <option value="EE">Electrical Enginering</option>
@@ -134,7 +134,7 @@
          </select>
                  </div>
                  
-                 <button type="submit" value="SUBMIT REQUEST">Submit</button>
+                 <button class="card-body course w3-button w3-none" style="padding:4%; " type="submit" value="SUBMIT REQUEST">Submit</button>
                      
       </form>
     </div>
